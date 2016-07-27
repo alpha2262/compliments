@@ -4,7 +4,10 @@ var app = express()
 app.set("view engine", "hbs")
 // app.use(express.static(compliment + "/public"))
 
-app.get("/", function(req, res){
+
+
+app.route("/")
+  .get("/", function(req, res){
   compliments = [
     "Your instructors love you",
     "High five = ^5",
