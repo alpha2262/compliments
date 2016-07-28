@@ -4,10 +4,7 @@ var app = express()
 app.set("view engine", "hbs")
 // app.use(express.static(compliment + "/public"))
 
-
-
-app.route("/")
-  .get("/", function(req, res){
+app.get("/", function(req, res){
   compliments = [
     "Your instructors love you",
     "High five = ^5",
@@ -42,17 +39,17 @@ app.get("/:name", function(req, res){
 
   colors = ["#FFBF00", "#0080FF","#01DF3A","#FF0080"]
 
-  var numCompliment = Math.floor((Math.random() * compliments.length) + 1 )
-  var numColor = Math.floor((Math.random() * colors.length) + 1 )
+  var numCompliment = Math.floor((Math.random() * compliments.length))
+  var numColor = Math.floor((Math.random() * colors.length))
 
   var compliment = compliments[numCompliment]
   var color = colors[numColor]
   res.send("<h1> hi " + req.params.name + " " + compliment + " and color: "+ color + "</h1>")
-  document.querySelector("h1").style.backgroundColor = color
+  // document.querySelector("h1").style.backgroundColor = color
 })
 
 app.post("/", function(req, res){
-  res.send("Hi " + req.params.name)
+  res.send("Hi " + req.param.name)
   console.log(req.body.name)
 })
 
